@@ -26,6 +26,4 @@ def customer_list(nor):
     return cust_al
 
 
-'''SAYANTAN CHATTERJEE'''
-
 
