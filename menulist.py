@@ -73,6 +73,3 @@ def food_list(nor):
     return menu_list_all
 
 
-'''SAYANTAN CHATTERJEE'''
-
-
