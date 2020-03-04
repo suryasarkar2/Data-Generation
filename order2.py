@@ -58,5 +58,3 @@ def order_list(menu,cust,nor):
         order_all.append(order_ind)
 
     return order_all
-
-'''SAYANTAN CHATTERJEE'''
