@@ -1,0 +1,112 @@
+<html>
+    <head style="background-color:black;">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        </head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    
+    <div id="container" class="card" style="height: 400px"></div>
+
+    <div id="container2" class="card" style="height: 400px"></div>
+    <div id="container3" class="card" style="height: 400px"></div>
+    <script>
+
+        $.ajax({
+        url: "http://127.0.0.1:5000/highcharts2",
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            // console.log(res);
+            var data=res;
+            console.log('Data',res);
+
+
+            Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'YEARLY ORDERS'
+    },
+    tooltip: {
+        pointFormat: '{series.Name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.Name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [data]
+});
+        }
+        });
+
+
+        $.ajax({
+        url: "http://127.0.0.1:5000/highcharts3",
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            // console.log(res);
+            var data=res;
+            console.log('Data',res);
+
+
+            Highcharts.chart('container2', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'DISH TYPE FREQUENCY'
+    },
+    tooltip: {
+        pointFormat: '{series.Name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.Name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [data]
+});
+        }
+        });
+
+
+
+    </script>
+
+        
+
+        
+</html>

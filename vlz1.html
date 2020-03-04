@@ -1,0 +1,57 @@
+<html>
+    <head >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        </head>
+        <body style="background-color:black;">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <div id="container" style="height: 400px"></div>
+    <script>
+
+        $.ajax({
+        url: "http://127.0.0.1:5000/highcharts",
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            // console.log(res);
+            var data=res;
+            console.log('Data',res);
+
+
+            Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'GENDER WISE CUSTOMER SHARE'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.Name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [data]
+});
+        }
+        });
+
+    </script>
+
+    </body>
+</html>
